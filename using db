@@ -1,0 +1,26 @@
+CREATE TABLE authors (
+  id INT PRIMARY KEY,
+  name VARCHAR(255)
+);
+
+CREATE TABLE books (
+  id INT PRIMARY KEY,
+  title VARCHAR(255),
+  author_id INT,
+  FOREIGN KEY (author_id) REFERENCES authors(id)
+);
+
+CREATE TABLE borrowers (
+  id INT PRIMARY KEY,
+  name VARCHAR(255)
+);
+
+CREATE TABLE loans (
+  id INT PRIMARY KEY,
+  book_id INT,
+  borrower_id INT,
+  loan_date DATE,
+  return_date DATE,
+  FOREIGN KEY (book_id) REFERENCES books(id),
+  FOREIGN KEY (borrower_id) REFERENCES borrowers(id)
+);
